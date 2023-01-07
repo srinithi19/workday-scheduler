@@ -1,6 +1,4 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+
 $(function () {
   let timeBlock = $(".time-block");
 
@@ -12,6 +10,16 @@ $(function () {
   }
   //used setInterval to increment the minutes and display time without refreshing page.
   setInterval(displayTime, 1000);
+
+  //display schdule stored in local storage
+  function displaySchedule() {
+    for (let i = 0; i < timeBlock.length; i++) {
+      hourId = timeBlock[i].id;
+      let textArea = timeBlock[i].children[1];
+      $(textArea).val(localStorage.getItem(hourId));
+    }
+  }
+
 
   //display color code based on cuurent hour
   let trackHour = function () {
@@ -36,20 +44,14 @@ $(function () {
     });
   };
   trackHour();
-  //displaySchedule();
+  displaySchedule();
 
-
-
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+  // Added a listener on click of the save button 
+  //to save the hour and schedule in local storage
+  $('.saveBtn').on('click',function() {
+    var hourEl = $(this).parent().attr('id');
+    var textEl = $(this).siblings('.description').val();
+    //console.log(hourEl,textEl);
+    localStorage.setItem(hourEl,textEl);
+  });
 });
