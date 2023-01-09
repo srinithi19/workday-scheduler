@@ -22,7 +22,7 @@ The user can enter any schedule for the time block and save it using save button
 
 workday scdedule page with color codes for each hour.
 
-
+![colorcoded-schedulelist](assets/images/homepage.png)
 
 <br>
 
@@ -36,6 +36,7 @@ List of schedule that can be viewed any time
 * event listener using jquery
 * significance of 'this' attribute
 * dom traversal using jquery
+* use of day.js
 
 <br>
 

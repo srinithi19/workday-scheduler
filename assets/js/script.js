@@ -24,10 +24,10 @@ $(function () {
   //display color code based on cuurent hour
   let trackHour = function () {
     $(timeBlock).each(function () {
-      let currentHour = dayjs().format('H');
+      let currentHour = dayjs().format('HH');
       let block = $(this).attr("id");
-      // console.log("cuurent"+currentHour);
-      // console.log("block"+block);
+      //console.log("cuurent"+currentHour);
+      //console.log("block"+block);
       if (block > currentHour) {
         $(this).addClass("future");
         $(this).removeClass("past");
